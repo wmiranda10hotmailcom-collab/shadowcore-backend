@@ -1,0 +1,17 @@
+{
+  "name": "shadowcore-api",
+  "version": "1.0.0",
+  "description": "Backend externo para ShadowCore (AI + Supabase)",
+  "main": "api/ai.js",
+  "scripts": {
+    "start": "node api/ai.js"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.39.3",
+    "dotenv": "^16.4.5",
+    "openai": "^4.28.4"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

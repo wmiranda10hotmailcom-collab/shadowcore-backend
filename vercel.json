@@ -1,0 +1,21 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "api/*.js",
+      "use": "@vercel/node"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/api/ai",
+      "dest": "/api/ai.js",
+      "methods": ["POST", "OPTIONS"]
+    },
+    {
+      "src": "/api/hotmart",
+      "dest": "/api/hotmart.js",
+      "methods": ["POST", "OPTIONS"]
+    }
+  ]
+}
