@@ -1,12 +1,9 @@
 const allowedOrigins = [
   'https://shadowcoreapp.com',
   'https://www.shadowcoreapp.com',
-
   'https://shadowcore.lovable.app',
   'https://preview-shadowcore.lovable.app',
-
   'https://rota-lucro-diario-axm5e9iug.vercel.app',
-
   'http://localhost:5173'
 ];
 
@@ -15,15 +12,12 @@ function handleCors(req, res) {
 
   console.log('CORS ORIGIN:', origin);
 
-  // Permitir qualquer subdomínio da Vercel
-  const isVercelPreview =
-    origin &&
-    (
-      origin.includes('.vercel.app') ||
-      allowedOrigins.includes(origin)
-    );
+  const isAllowed =
+    !origin ||
+    allowedOrigins.includes(origin) ||
+    origin.includes('.vercel.app');
 
-  if (isVercelPreview || !origin) {
+  if (isAllowed) {
     res.setHeader('Access-Control-Allow-Origin', origin || '*');
   }
 
@@ -36,7 +30,7 @@ function handleCors(req, res) {
 
   res.setHeader(
     'Access-Control-Allow-Headers',
-    'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version, Authorization'
+    'Origin, X-Requested-With, Content-Type, Accept, Authorization'
   );
 
   if (req.method === 'OPTIONS') {
