@@ -1,9 +1,10 @@
 const allowedOrigins = [
   'https://shadowcoreapp.com',
   'https://www.shadowcoreapp.com',
-  'https://shadowcore.lovable.app',
-  'https://preview-shadowcore.lovable.app',
+  'https://shadowcore-backend.vercel.app',
   'https://rota-lucro-diario-axm5e9iug.vercel.app',
+  'https://preview-shadowcore.lovable.app',
+  'https://shadowcore.lovable.app',
   'http://localhost:5173'
 ];
 
