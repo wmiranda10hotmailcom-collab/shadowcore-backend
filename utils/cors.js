@@ -12,6 +12,7 @@ function handleCors(req, res) {
   const origin = req.headers.origin;
 
   console.log('CORS ORIGIN:', origin);
+  console.log('CORS METHOD:', req.method);
 
   const isAllowed =
     !origin ||
@@ -22,7 +23,12 @@ function handleCors(req, res) {
     res.setHeader('Access-Control-Allow-Origin', origin || '*');
   }
 
-  res.setHeader('Access-Control-Allow-Credentials', 'true');
+  res.setHeader('Vary', 'Origin');
+
+  res.setHeader(
+    'Access-Control-Allow-Credentials',
+    'true'
+  );
 
   res.setHeader(
     'Access-Control-Allow-Methods',
@@ -31,12 +37,25 @@ function handleCors(req, res) {
 
   res.setHeader(
     'Access-Control-Allow-Headers',
-    'Origin, X-Requested-With, Content-Type, Accept, Authorization'
+    [
+      'Origin',
+      'X-Requested-With',
+      'Content-Type',
+      'Accept',
+      'Authorization',
+      'Cache-Control',
+      'Pragma'
+    ].join(', ')
   );
 
+  res.setHeader(
+    'Access-Control-Max-Age',
+    '86400'
+  );
+
+  // MUITO IMPORTANTE
   if (req.method === 'OPTIONS') {
-    res.status(200).end();
-    return true;
+    return res.status(200).end();
   }
 
   return false;
