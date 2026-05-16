@@ -5,6 +5,7 @@ const allowedOrigins = [
   'https://rota-lucro-diario-axm5e9iug.vercel.app',
   'https://preview-shadowcore.lovable.app',
   'https://shadowcore.lovable.app',
+  'https://shadowcore-api.vercel.app',
   'http://localhost:5173'
 ];
 
